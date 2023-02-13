@@ -26,7 +26,7 @@ import send_funnc
 # all_post = response.json()
 now = datetime.now()
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DAATABASE_URL")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 db = SQLAlchemy(app)
 ckeditor = CKEditor(app)
 Bootstrap(app)
