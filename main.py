@@ -31,7 +31,7 @@ db = SQLAlchemy(app)
 Base = declarative_base()
 ckeditor = CKEditor(app)
 Bootstrap(app)
-app.config['SECRET_KEY'] = 'yourfada'
+app.config['SECRET_KEY'] = os.environ.get("blog_csfr_key")
 login_manager = LoginManager(app)
 gravatar = Gravatar(app,
                     size=40,
@@ -41,7 +41,6 @@ gravatar = Gravatar(app,
                     force_lower=False,
                     use_ssl=False,
                     base_url=None)
-
 
 # creates a bidirectional users database(many to many)
 class Users(db.Model, UserMixin):
@@ -53,6 +52,7 @@ class Users(db.Model, UserMixin):
     posts = db.relationship("BlogPost", back_populates="author")
     comments = db.relationship("Comments", back_populates="user")
     code = db.relationship("Code", back_populates="user")
+
 
 class Code(db.Model):
     __tablename__ = "code"
@@ -90,7 +90,6 @@ class Comments(db.Model):
 
 with app.app_context():
         db.create_all()
-
 
 ##WTForm
 # form to create a post
