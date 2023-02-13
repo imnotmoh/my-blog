@@ -5,7 +5,7 @@ import flask_wtf
 from flask import Flask, render_template, request, redirect, url_for, flash, get_flashed_messages
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Table, Column, Integer, ForeignKey
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.orm import relationship
 from flask_ckeditor import CKEditor, CKEditorField
 from flask_gravatar import Gravatar
 
@@ -28,7 +28,6 @@ now = datetime.now()
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
 db = SQLAlchemy(app)
-Base = declarative_base()
 ckeditor = CKEditor(app)
 Bootstrap(app)
 app.config['SECRET_KEY'] = os.environ.get("blog_csfr_key")
