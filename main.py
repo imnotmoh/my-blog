@@ -26,8 +26,7 @@ import send_funnc
 # all_post = response.json()
 now = datetime.now()
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
-
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DAATABASE_URL")
 db = SQLAlchemy(app)
 ckeditor = CKEditor(app)
 Bootstrap(app)
@@ -88,8 +87,8 @@ class Comments(db.Model):
     blog_post = db.relationship("BlogPost", back_populates="comment")
 
 
-with app.app_context():
-        db.create_all()
+# with app.app_context():
+#         db.create_all()
 
 ##WTForm
 # form to create a post
