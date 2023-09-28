@@ -87,8 +87,8 @@ class Comments(db.Model):
     blog_post = db.relationship("BlogPost", back_populates="comment")
 
 
-with app.app_context():
-        db.create_all()
+# with app.app_context():
+#         db.create_all()
 
 ##WTForm
 # form to create a post
